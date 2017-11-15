@@ -1,0 +1,31 @@
+KC-Ersatz POC aka Charon
+
+
+I) Authentifizieren eines Benutzers
+	- REST-Endpunkt
+	- Authentifizierung mit Username/Passwort
+	- Ergebnis sind
+		-> Status-Code -> Erfolg/Misserfolg
+		-> bei Erfolg: ein JSON-User-Objekt
+		-> bei Erfolg: ein Access- und Refresh-Token (JWT)
+
+
+II) User-Management
+	- bietet angemeldeten Usern einen Endpunkt, um 
+		-> neue User anzulegen (Id, Vor-, Nachname, Email, Passwort, lkz)
+		-> bestehende zu ändern (Vor-, Nachname, Email, Passwort, lkz)
+		-> Rollen anzulegen
+		-> Rollen zu ändern (umbenennen, löschen)
+		-> Rollen Usern zuzuweisen
+		-> beliebige Attribute an User zu hängen (Zusatzattribute)
+		-> Zusatzattribute zu pflegen
+
+
+III) Refresh
+
+
+IV) Rollenkonzept
+
+
+1. authenticate(user, passwd) -> ResponseJSON(statuscode, User{}, Token)
+2. 
