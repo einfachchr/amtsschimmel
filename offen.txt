@@ -2,16 +2,23 @@ KC-Ersatz POC aka Charon
 
 
 I) Authentifizieren eines Benutzers
-	- REST-Endpunkt
-	- Authentifizierung mit Username/Passwort
-	- Ergebnis sind
-		-> Status-Code -> Erfolg/Misserfolg
+	FERTIG REST-EP /authorize
+		FERTIG bekommt Username, Passwort und liest es aus dem Request
+		FERTIG liefert über den HTTP-Status Erfolg/Misserfolg zurück
+
+	- Authentifizierung mit Username/Passwort gegen eine statische Liste
 		-> bei Erfolg: ein JSON-User-Objekt
 		-> bei Erfolg: ein Access- und Refresh-Token (JWT)
+		-> bei Fehlschlag: nur HTTP-Status
+		-> Hashen des Passworts
+
+	- Einführen einer (Mongo-)DB
+		-> User-Objekt in DB ablegen (erstmal statische Testuser)
+		-> bei Authentifizierung User aus der DB auslesen
 
 
 II) User-Management
-	- bietet angemeldeten Usern einen Endpunkt, um 
+	- bietet angemeldeten Usern einen Endpunkt, um
 		-> neue User anzulegen (Id, Vor-, Nachname, Email, Passwort, lkz)
 		-> bestehende zu ändern (Vor-, Nachname, Email, Passwort, lkz)
 		-> Rollen anzulegen
@@ -25,7 +32,3 @@ III) Refresh
 
 
 IV) Rollenkonzept
-
-
-1. authenticate(user, passwd) -> ResponseJSON(statuscode, User{}, Token)
-2. 

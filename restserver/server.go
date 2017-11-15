@@ -1,5 +1,13 @@
 package restserver
 
+/*
+  Definiert den REST-Server.
+
+	Hier wird der Infrastruktur-Code für Request- und Response-Verarbeitung gesammelt. Außerdem findet
+	sich hier die Konfiguration der Endpunkte.
+
+*/
+
 import (
 	"fmt"
 	"log"
@@ -8,10 +16,6 @@ import (
 
 	"github.com/gorilla/mux"
 )
-
-/*
-  Definiert den REST-Server
-*/
 
 /*
   Das Server-"Objekt"
@@ -93,10 +97,13 @@ func (s *Server) Home(rw http.ResponseWriter, r *http.Request) {
 }
 
 /*
-	POST /authorize
+	POST /authorize - implementiert das Verhalten des Endpunktes. Die Fachlogik ist an den Service
+	ausgelagert.
 
-	Die Methode erwartet Daten im Format application/x-www-form-urlencoded.
+	Die Methode erwartet POST-Daten im Format application/x-www-form-urlencoded
+	("username=chef&password=geheim").
 
+	Bsp-Aufruf:
 	curl -i -d "username=chef&password=geheim" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:8080/authorize
 
 */
@@ -123,7 +130,7 @@ func (s *Server) PostAuthorize(rw http.ResponseWriter, r *http.Request) {
 /*
 	Liest Username und Password aus dem Request.
 */
-func (s *Server) readRequestData(req *http.Request) (string, string, error) {
+func (s *Server) readRequestData(req *http.Request) (u string, p string, err error) {
 	var username, password string
 
 	req.ParseForm()
