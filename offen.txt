@@ -8,6 +8,9 @@ I) Authentifizieren eines Benutzers
 
 	- Authentifizierung mit Username/Passwort gegen eine statische Liste
 		-> bei Erfolg: ein JSON-User-Objekt
+			FERTIG Service bauen
+			FERTIG Persistenz-Layer vorbereiten (statisch)
+			* Durchstich vom Endpunkt
 		-> bei Erfolg: ein Access- und Refresh-Token (JWT)
 		-> bei Fehlschlag: nur HTTP-Status
 		-> Hashen des Passworts
